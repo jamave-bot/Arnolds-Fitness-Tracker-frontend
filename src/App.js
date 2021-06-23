@@ -12,10 +12,27 @@ export default class App extends Component {
 
 
   state= {
+      workouts: [],
+      
 
 
 
   }
+
+
+  componentDidMount(){
+    fetch("http://localhost:4000/workout")
+      .then(res => res.json())
+      .then((workoutArr) => {
+        console.log(workoutArr)
+        // this.setState({
+        //   workouts: workoutArr
+        // })
+      })
+  } 
+
+
+
 
 
 
