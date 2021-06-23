@@ -18,10 +18,10 @@ export default class App extends Component {
   }
 
 
-  componentDidMount(){
-    fetch('http://localhost:9393/users')
-      .then()
-  }
+  // componentDidMount(){
+  //   fetch('http://localhost:9393/users')
+  //     .then()
+  // }
 
   setSearchTerm = (term)=>{
     this.setState({
@@ -38,7 +38,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-         <h1>Logged In: {this.state.logged}</h1>
          <h1>{this.state.searchTerm}</h1>
          <Login logIn={this.logIn}/>
          <Header />
