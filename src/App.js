@@ -12,7 +12,8 @@ export default class App extends Component {
 
 
   state= {
-      workouts: [],
+      user: {workouts:[]}
+
       
 
 
@@ -21,31 +22,27 @@ export default class App extends Component {
 
 
   componentDidMount(){
-    fetch("http://localhost:4000/workout")
+    fetch("http://localhost:9393/users")
       .then(res => res.json())
-      .then((workoutArr) => {
-        console.log(workoutArr)
-        // this.setState({
-        //   workouts: workoutArr
-        // })
+      .then((usersArr) => {
+        console.log(usersArr[0])
+        this.setState({
+          user: usersArr[0]
+        })
       })
   } 
 
 
 
 
-
-
-
-
-
   render() {
+    console.log(this.state)
     return (
       <div>
          <Header />
          <LogWokout />
          <SearchBar />
-         <WorkoutContainer />
+         <WorkoutContainer user={this.state.user}/>
       </div>
     )
   }
