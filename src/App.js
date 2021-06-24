@@ -5,33 +5,52 @@ import Header from './Components/Header';
 import SearchBar from './Components/SearchBar.jsx';
 import LogWokout from './Components/LogWorkout'
 import WorkoutContainer from './Components/WorkOutContainer'
-
+import Login from './Components/Login'
+import LogOut from './Components/LogOut'
 
 
 export default class App extends Component {
 
 
   state= {
-      user: {workouts:[]}
-
-      
-
-
-
+    // user: {workouts:[]},
+    name: '',
+    age: 0,
+    height: '', 
+    weight: 0,
+    bodyfat: 0.0,
+    workouts: [],
+    loggedIn : false
   }
 
 
-  componentDidMount(){
-    fetch("http://localhost:9393/users")
-      .then(res => res.json())
-      .then((usersArr) => {
-        console.log(usersArr[0])
-        this.setState({
-          user: usersArr[0]
-        })
+  logIn = (user)=>{
+    if (user.error){
+      alert("Username or Password is Wrong!")
+    } else{
+      this.setState({
+        name: user.name,
+        age: user.age,
+        height: user.height,
+        weight: user.weight,
+        bodyfat: user.bodyfat,
+        workouts: user.workouts,
+        loggedIn: !this.state.loggedIn
       })
-  } 
+    }
+  }
 
+  logOut = ()=>{
+    this.setState({
+      name: '',
+      age: 0,
+      height: '',
+      weight: 0,
+      bodyfat: 0.0,
+      workouts: [],
+      loggedIn: !this.state.loggedIn
+    })
+  }
 
 
 
@@ -40,9 +59,10 @@ export default class App extends Component {
     return (
       <div>
          <Header />
+         {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          <LogWokout />
          <SearchBar />
-         <WorkoutContainer user={this.state.user}/>
+         <WorkoutContainer user={this.state.user} workouts={this.state.workouts}/>
       </div>
     )
   }

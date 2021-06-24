@@ -7,7 +7,7 @@ export default class WorkOutContainer extends Component {
 //  The below will tranform our array object into an array of componenets {}{}{}     </></></>
     
     array=()=> {
-     let arrayOfComp = this.props.user.workouts.map(workoutObj => { 
+     let arrayOfComp = this.props.workouts.map(workoutObj => { 
      return <Workout key={workoutObj.id} workout={workoutObj}/>
        })
     return arrayOfComp
@@ -18,7 +18,7 @@ export default class WorkOutContainer extends Component {
     
     
     render() {
-        console.log(this.props.user.workouts)
+        // console.log(this.props.workouts)
         // console.log(this.arrayOfComp)
         // console.log(arrayOfComp)
         return (
