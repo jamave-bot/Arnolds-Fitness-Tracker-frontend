@@ -80,10 +80,6 @@ export default class NewUserForm extends Component {
                     <input placeholder="Choose a Password" onChange={this.handleChange} name="password" value={this.state.password}/>
                     </Form.Field>
 
-                    <Form.Field>
-                    <input placeholder="Professor Name" onChange={this.handleChange} name="professorName" value={this.state.professorName}/>
-                    </Form.Field>
-
                     <Button type='submit' onClick={this.handleSubmit}>Create User!</Button>
                 </Form>
             </>
