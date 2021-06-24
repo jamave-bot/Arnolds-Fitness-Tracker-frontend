@@ -23,9 +23,11 @@ export default class WorkOutContainer extends Component {
 
         return (
             <div>
-                  <ul className="cards">
-                  {this.array()}
-                  </ul>
+                <h2>Workouts</h2>
+
+                <ul className="cards">
+                {this.array()}
+                </ul>
             </div>
         )
     }

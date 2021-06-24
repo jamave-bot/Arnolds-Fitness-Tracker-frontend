@@ -9,7 +9,7 @@ import WorkoutContainer from './Components/WorkOutContainer'
 import Login from './Components/Login'
 import LogOut from './Components/LogOut'
 import WorkoutForm from './Components/WorkoutForm'
-
+import NewUserForm from './Components/NewUserForm';
 
 
 export default class App extends Component {
@@ -23,8 +23,16 @@ export default class App extends Component {
     weight: 0,
     bodyfat: 0.0,
     workouts: [],
+    filter:'',
     loggedIn : false
   }
+
+   //UPDATE FILTER WITHIN STATE IN ACCORDANCE WITH OUR SEARCHBAR
+   updateFilterState= (value) => {
+    this.setState({
+      filter: value
+    })
+ }
 
 
   logIn = (user)=>{
@@ -78,14 +86,21 @@ export default class App extends Component {
 
   render() {
     console.log(this.state.user)
+    //SEARCH FILTER FUNTIONALITY
+    let workoutsCopy = [...this.state.workouts]
+    let newArrayOfWorkouts = workoutsCopy.filter((workout)=>{
+      return (workout.name.toLowerCase().includes(this.state.filter.toLowerCase()))
+      })
+    let userCopy = {...this.state.user}
+    userCopy.workouts=newArrayOfWorkouts
     return (
       <div>
          <Header />
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          <LogWorkout />
          {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id}/> : null }
-         <h2>Workouts</h2>
-         <SearchBar />
+         <NewUserForm />
+         {this.state.loggedIn?<SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>:null}
          <WorkoutContainer user={this.state} deleteWorkout={this.deleteWorkout}/>
       </div>
     )
