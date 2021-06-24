@@ -91,17 +91,15 @@ export default class App extends Component {
     let newArrayOfWorkouts = workoutsCopy.filter((workout)=>{
       return (workout.name.toLowerCase().includes(this.state.filter.toLowerCase()))
       })
-    let userCopy = {...this.state.user}
-    userCopy.workouts=newArrayOfWorkouts
     return (
       <div>
          <Header />
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          <LogWorkout />
          {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id}/> : null }
-         <NewUserForm />
+         {this.state.loggedIn? null: <NewUserForm />}
          {this.state.loggedIn?<SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>:null}
-         <WorkoutContainer user={this.state} deleteWorkout={this.deleteWorkout}/>
+         <WorkoutContainer workouts={this.state.workouts} deleteWorkout={this.deleteWorkout}/>
       </div>
     )
   }
