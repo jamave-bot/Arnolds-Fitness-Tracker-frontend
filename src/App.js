@@ -12,11 +12,11 @@ export default class App extends Component {
 
 
   state= {
-    user: {workouts:[]}
-       
+    user: {workouts:[]},
+    filter: ""
   }
 
-
+ 
   componentDidMount(){
     fetch("http://localhost:9393/users")
       .then(res => res.json())
@@ -27,6 +27,16 @@ export default class App extends Component {
         })
       })
   } 
+
+ //UPDATE FILTER WITHIN STATE IN ACCORDANCE WITH OUR SEARCHBAR
+  updateFilterState= (value) => {
+    this.setState({
+      filter: value
+    })
+ }
+
+
+
 
   // DELETES WORKOUT VIA FETCH AND ALSO CHANGES THE FRONT END
   deleteWorkout = (id) => {
@@ -49,13 +59,21 @@ export default class App extends Component {
 
 
   render() {
-    console.log(this.state.user)
+    //SEARCH FILTER FUNTIONALITY
+    let arrayOfWorkouts = this.state.user.workouts
+    let newArrayOfWorkouts = arrayOfWorkouts.filter((workout)=>{
+    return (workout.name.toLowerCase().includes(this.state.filter.toLowerCase()))
+    })
+    let userCopy = {...this.state.user}
+    userCopy.workouts=newArrayOfWorkouts
+    
+
     return (
       <div>
          <Header />
          <LogWokout />
-         <SearchBar />
-         <WorkoutContainer user={this.state.user} deleteWorkout={this.deleteWorkout}/>
+         <SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>
+         <WorkoutContainer user={userCopy} deleteWorkout={this.deleteWorkout}/>
       </div>
     )
   }
