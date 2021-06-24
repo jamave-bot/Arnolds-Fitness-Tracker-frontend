@@ -83,6 +83,7 @@ export default class App extends Component {
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          <LogWorkout />
          {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id}/> : null }
+         <h2>Workouts</h2>
          <SearchBar />
          <WorkoutContainer user={this.state} deleteWorkout={this.deleteWorkout}/>
       </div>

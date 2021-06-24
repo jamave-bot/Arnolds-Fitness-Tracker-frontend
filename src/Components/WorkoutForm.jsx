@@ -9,7 +9,9 @@ export default class WorkoutForm extends Component {
     state={
         showWorkOutForm: false,
         showExerciseForm: false,
-        workoutObj: {}
+        workoutObj: {
+            exercises: []
+        }
     }
 
     handleClick = ()=>{

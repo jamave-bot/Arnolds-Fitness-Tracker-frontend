@@ -23,7 +23,6 @@ export default class WorkOutContainer extends Component {
 
         return (
             <div>
-                <h2> Workout Log</h2>
                   <ul className="cards">
                   {this.array()}
                   </ul>
