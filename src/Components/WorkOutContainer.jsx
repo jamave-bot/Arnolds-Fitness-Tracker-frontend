@@ -8,7 +8,7 @@ export default class WorkOutContainer extends Component {
     
     array=()=> {
      let arrayOfComp = this.props.user.workouts.map(workoutObj => { 
-     return <Workout key={workoutObj.id} workout={workoutObj}/>
+     return <Workout key={workoutObj.id} workout={workoutObj} deleteWorkout={this.props.deleteWorkout}/>
        })
     return arrayOfComp
     }
@@ -18,9 +18,9 @@ export default class WorkOutContainer extends Component {
     
     
     render() {
-        console.log(this.props.user.workouts)
-        // console.log(this.arrayOfComp)
-        // console.log(arrayOfComp)
+       
+
+
         return (
             <div>
                 <h2> Workout Log</h2>

@@ -12,12 +12,8 @@ export default class App extends Component {
 
 
   state= {
-      user: {workouts:[]}
-
-      
-
-
-
+    user: {workouts:[]}
+       
   }
 
 
@@ -25,24 +21,41 @@ export default class App extends Component {
     fetch("http://localhost:9393/users")
       .then(res => res.json())
       .then((usersArr) => {
-        console.log(usersArr[0])
+        
         this.setState({
           user: usersArr[0]
         })
       })
   } 
 
+  // DELETES WORKOUT VIA FETCH AND ALSO CHANGES THE FRONT END
+  deleteWorkout = (id) => {
+    fetch(`http://localhost:9393/workouts/${id}`, {
+      method: "DELETE",
+      })
+      .then(res => res.json())
+      .then(() => {
+
+        let userCopy = {...this.state.user}
+        let arrayWithoutDeleted = this.state.user.workouts.filter((workoutObj) => { 
+           return workoutObj.id !== id})
+
+        userCopy.workouts=arrayWithoutDeleted
+        this.setState({user: userCopy})    
+      })
+  }
+
 
 
 
   render() {
-    console.log(this.state)
+    console.log(this.state.user)
     return (
       <div>
          <Header />
          <LogWokout />
          <SearchBar />
-         <WorkoutContainer user={this.state.user}/>
+         <WorkoutContainer user={this.state.user} deleteWorkout={this.deleteWorkout}/>
       </div>
     )
   }
