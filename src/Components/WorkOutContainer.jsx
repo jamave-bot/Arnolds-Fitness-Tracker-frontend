@@ -13,8 +13,7 @@ export default class WorkOutContainer extends Component {
     return arrayOfComp
     }
 
-    
-    
+        
     
     
     render() {
