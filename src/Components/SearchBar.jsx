@@ -8,6 +8,8 @@ export default class SearchBar extends Component {
     }
 
     render() {
+      
+      
         return (
             <div>
                 <Input icon='search' onChange={this.handleChange} value={this.props.value} placeholder="Search Workout..." />

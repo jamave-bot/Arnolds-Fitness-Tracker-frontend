@@ -50,7 +50,7 @@ export default class WorkoutForm extends Component {
                 : 
                 null 
             }   
-            {this.state.showExerciseForm? <ExerciseForm workoutObj={this.state.workoutObj}/>: this.workoutButton()}
+            {this.state.showExerciseForm? <ExerciseForm workoutObj={this.state.workoutObj} toggleExerciseForm={this.toggleExerciseForm}/>: this.workoutButton()}
             </>
         )
     }

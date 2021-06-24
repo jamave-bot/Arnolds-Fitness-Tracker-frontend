@@ -10,7 +10,6 @@ export default class Login extends Component {
 
     handleSubmit = (evt)=>{
         evt.preventDefault()
-        console.log("this was pressed")
         fetch("http://localhost:9393/login", {
             method: "POST",
             headers: {
