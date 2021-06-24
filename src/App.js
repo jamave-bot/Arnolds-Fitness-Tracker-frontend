@@ -6,44 +6,62 @@ import SearchBar from './Components/SearchBar.jsx';
 import LogWorkout from './Components/LogWorkout'
 import WorkoutContainer from './Components/WorkOutContainer'
 import Login from './Components/Login'
-
+import LogOut from './Components/LogOut'
 
 
 export default class App extends Component {
 
 
   state= {
-    searchTerm: '',
-
+    // user: {workouts:[]},
+    name: '',
+    age: 0,
+    height: '', 
+    weight: 0,
+    bodyfat: 0.0,
+    workouts: [],
+    loggedIn : false
   }
 
-
-  // componentDidMount(){
-  //   fetch('http://localhost:9393/users')
-  //     .then()
-  // }
-
-  setSearchTerm = (term)=>{
-    this.setState({
-      searchTerm: term
-    })
-  }
 
   logIn = (user)=>{
     if (user.error){
       alert("Username or Password is Wrong!")
+    } else{
+      this.setState({
+        name: user.name,
+        age: user.age,
+        height: user.height,
+        weight: user.weight,
+        bodyfat: user.bodyfat,
+        workouts: user.workouts,
+        loggedIn: !this.state.loggedIn
+      })
     }
   }
 
+  logOut = ()=>{
+    this.setState({
+      name: '',
+      age: 0,
+      height: '',
+      weight: 0,
+      bodyfat: 0.0,
+      workouts: [],
+      loggedIn: !this.state.loggedIn
+    })
+  }
+
+
   render() {
+    console.log(this.state)
     return (
       <div>
-         <h1>{this.state.searchTerm}</h1>
-         <Login logIn={this.logIn}/>
          <Header />
+         {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          <LogWorkout />
-         <SearchBar setSearchTerm={this.setSearchTerm} value={this.state.searchTerm}/>
-         <WorkoutContainer />
+         <SearchBar />
+         <WorkoutContainer user={this.state.user} workouts={this.state.workouts}/>
       </div>
     )
   }

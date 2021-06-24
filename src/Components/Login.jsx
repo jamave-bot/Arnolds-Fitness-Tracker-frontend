@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'semantic-ui-react'
+// import { Form, Button } from 'semantic-ui-react'
 
 
 export default class Login extends Component {
@@ -10,6 +10,7 @@ export default class Login extends Component {
 
     handleSubmit = (evt)=>{
         evt.preventDefault()
+        console.log("this was pressed")
         fetch("http://localhost:9393/login", {
             method: "POST",
             headers: {
@@ -36,19 +37,19 @@ export default class Login extends Component {
     }
 
     render() {
-        return (<>
+        return (
+            <>
             <h1>Log In Form</h1>
-            <Form>
-                <Form.Field onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
+
                 <label>Name</label>
                 <input placeholder='Enter Account Name' name='name' onChange={this.handleChange} value={this.state.name}/>
-                </Form.Field>
-                <Form.Field>
+
                 <label>Password</label>
                 <input placeholder='...' type='password' name='password'onChange={this.handleChange} value={this.state.password}/>
-                </Form.Field>
-                <Button type='submit'>Submit</Button>
-            </Form>
+
+                <button type='submit'>Submit</button>
+            </form>
             </>
         )
     }
