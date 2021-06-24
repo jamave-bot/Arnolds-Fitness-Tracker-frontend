@@ -7,13 +7,15 @@ import LogWorkout from './Components/LogWorkout'
 import WorkoutContainer from './Components/WorkOutContainer'
 import Login from './Components/Login'
 import LogOut from './Components/LogOut'
+import WorkoutForm from './Components/WorkoutForm'
+
 
 
 export default class App extends Component {
 
 
   state= {
-    // user: {workouts:[]},
+    user_id: 0,
     name: '',
     age: 0,
     height: '', 
@@ -29,6 +31,7 @@ export default class App extends Component {
       alert("Username or Password is Wrong!")
     } else{
       this.setState({
+        user_id: user.id,
         name: user.name,
         age: user.age,
         height: user.height,
@@ -49,18 +52,18 @@ export default class App extends Component {
       .then(res => res.json())
       .then(() => {
 
-        let userCopy = {...this.state.user}
-        let arrayWithoutDeleted = this.state.user.workouts.filter((workoutObj) => { 
+        let userCopy = [...this.state.workouts]
+        let arrayWithoutDeleted = userCopy.filter((workoutObj) => { 
            return workoutObj.id !== id})
 
-        userCopy.workouts=arrayWithoutDeleted
-        this.setState({user: userCopy})    
+        this.setState({workouts: arrayWithoutDeleted})    
       })
   }
 
 
   logOut = ()=>{
     this.setState({
+      user_id: 0,
       name: '',
       age: 0,
       height: '',
@@ -79,6 +82,7 @@ export default class App extends Component {
          <Header />
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          <LogWorkout />
+         {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id}/> : null }
          <SearchBar />
          <WorkoutContainer user={this.state} deleteWorkout={this.deleteWorkout}/>
       </div>
