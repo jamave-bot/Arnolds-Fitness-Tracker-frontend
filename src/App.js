@@ -40,6 +40,25 @@ export default class App extends Component {
     }
   }
 
+
+  // DELETES WORKOUT VIA FETCH AND ALSO CHANGES THE FRONT END
+  deleteWorkout = (id) => {
+    fetch(`http://localhost:9393/workouts/${id}`, {
+      method: "DELETE",
+      })
+      .then(res => res.json())
+      .then(() => {
+
+        let userCopy = {...this.state.user}
+        let arrayWithoutDeleted = this.state.user.workouts.filter((workoutObj) => { 
+           return workoutObj.id !== id})
+
+        userCopy.workouts=arrayWithoutDeleted
+        this.setState({user: userCopy})    
+      })
+  }
+
+
   logOut = ()=>{
     this.setState({
       name: '',
@@ -54,14 +73,14 @@ export default class App extends Component {
 
 
   render() {
-    console.log(this.state)
+    console.log(this.state.user)
     return (
       <div>
          <Header />
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          <LogWorkout />
          <SearchBar />
-         <WorkoutContainer user={this.state.user} workouts={this.state.workouts}/>
+         <WorkoutContainer user={this.state} deleteWorkout={this.deleteWorkout}/>
       </div>
     )
   }
