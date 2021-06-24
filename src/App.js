@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import SearchBar from './Components/SearchBar.jsx';
 import LogWokout from './Components/LogWorkout'
 import WorkoutContainer from './Components/WorkOutContainer'
+import NewUserForm from './Components/NewUserForm';
 
 
 
@@ -74,6 +75,7 @@ export default class App extends Component {
          <LogWokout />
          <SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>
          <WorkoutContainer user={userCopy} deleteWorkout={this.deleteWorkout}/>
+         <NewUserForm />
       </div>
     )
   }
