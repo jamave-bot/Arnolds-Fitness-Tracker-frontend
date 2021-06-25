@@ -46,7 +46,7 @@ render() {
                          <Card.Content>
                              <Card.Header>{this.props.workout.name}</Card.Header>
                              <Card.Description>{this.props.workout.created_at}</Card.Description>
-                             <Button color="blue" onClick={this.deleteHandler}>Delete</Button>                        
+                             <Button color="red" onClick={this.deleteHandler}>Delete</Button>                        
                          </Card.Content>
                       </Card>
                       <br></br>

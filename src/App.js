@@ -71,7 +71,13 @@ export default class App extends Component {
     
 
     return (
-      <div>
+      // <div class="big-container">
+
+      <div style={{ 
+          backgroundImage: `url("https://wallpapertag.com/wallpaper/full/8/a/7/717416-download-free-arnold-schwarzenegger-bodybuilding-wallpapers-posters-and-pictures-hd-1920x1200-download.jpg")`,
+          // backgroundRepeat: 'no-repeat',
+          width:'1950px'  
+      }}>
          <Header />
          <LogWokout />
          <SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>
