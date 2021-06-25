@@ -34,7 +34,6 @@ export default class ExerciseForm extends Component {
         })
         .then((r) => r.json())
         .then((exerciseObj) =>{
-            console.log(exerciseObj)
             let copyArr = [...this.state.exercisesArr] 
             let newArr = [...copyArr, exerciseObj]
             this.setState({
@@ -54,6 +53,13 @@ export default class ExerciseForm extends Component {
             [evt.target.name]: evt.target.value
         })
     }
+
+
+
+    handleClick = (e)=>{
+        this.props.toggleExerciseForm()
+        this.props.addWorkoutToArr(this.props.workoutObj)
+    }
  
    
     render() {
@@ -62,8 +68,7 @@ export default class ExerciseForm extends Component {
               <h3>{exercise.name}</h3> 
               <p>Weight:{exercise.weight}</p>
               <p>Sets:{exercise.sets}</p> 
-              <p>Reps:{exercise.duration}</p> 
-              <p>Calories Burned:{exercise.calories_burned}</p>
+              <p>Reps:{exercise.reps}</p> 
             </div> )
         return (
             <>
@@ -104,7 +109,7 @@ export default class ExerciseForm extends Component {
                     <Button type='submit'>Add Exercise</Button>
                 </Form>
 
-                <Button onClick={this.props.toggleExerciseForm}>Finish</Button>
+                <Button onClick={this.handleClick}>Finish</Button>
             </>
         )
     }

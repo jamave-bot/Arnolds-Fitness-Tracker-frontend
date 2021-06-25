@@ -27,7 +27,7 @@ export default class NewWorkoutForm extends Component {
         })
         .then((r) => r.json())
         .then((workoutObj) =>{
-            console.log(workoutObj)
+            console.log("this is workoutObj in NewWorkOutForm: ", workoutObj)
             this.props.getWorkOutObj(workoutObj)
             this.setState({
                 name: '',
@@ -38,6 +38,9 @@ export default class NewWorkoutForm extends Component {
         });
 
     }
+
+
+    
 
     render() {
         return (

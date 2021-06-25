@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import 'semantic-ui-css/semantic.min.css'
+import { Card, Button } from 'semantic-ui-react'
+
 
 export default class Workout extends Component {
 
@@ -22,11 +25,12 @@ deleteHandler = () => {
 render() {
     let workoutArr = this.props.workout.exercises.map(exercise => 
     <div key={exercise.id}>
-      <p>{exercise.name}</p> 
-      <p>Sets:{exercise.sets}</p> 
-      <p>Reps:{exercise.duration}</p> 
-      <p>Calories Burned:{exercise.calories_burned}</p>
+      <h5>{exercise.name}</h5> 
       <p>Weight:{exercise.weight}</p>
+      <p>Sets:{exercise.sets}</p> 
+      <p>Reps:{exercise.reps}</p> 
+      <p>Calories Burned:{exercise.calories_burned}</p>
+      <br></br>
     </div> )
                                                  
             
@@ -35,27 +39,40 @@ render() {
         return (
 
            
+            <Card.Group>
+             
             <div onClick={this.toggleShowingFront}>
                <div>{this.state.showingFront? 
-                     <div id="workoutFront">{this.props.workout.name}
-                         <br></br>
-                         {this.props.workout.created_at}
-                         <br></br>
-                         <button onClick={this.deleteHandler}>Delete</button>
-                         <br></br>
-                         <br></br>
-                         <br></br>
+                    <div>
+                      <Card color='black'>
+                         <Card.Content>
+                             <Card.Header>{this.props.workout.name}</Card.Header>
+                             <Card.Description>{this.props.workout.created_at.slice(0,10)}</Card.Description>
+                             <Button color="red" onClick={this.deleteHandler}>Delete</Button>                        
+                         </Card.Content>
+                      </Card>
+                      <br></br>
                      </div>
                      :
                      <div id="workoutBack">
-                         <p> Exercise Details</p>
-                         {workoutArr}                               
+                      <Card color='black'>
+                        <Card.Content>
+                          <Card.Header>{this.props.workout.name} Details</Card.Header>
+                          <Card.Description>{workoutArr}</Card.Description>
+
+                          
+                        </Card.Content>  
+                      </Card>
+                      <br></br>
+
+                                                 
                      </div>
                     }                
                 </div>     
-                
+        
                            
-            </div>
+              </div>
+            </Card.Group>
             
         )
     }

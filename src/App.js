@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 
 import Header from './Components/Header';
 import SearchBar from './Components/SearchBar.jsx';
-import LogWorkout from './Components/LogWorkout'
 import WorkoutContainer from './Components/WorkOutContainer'
 import Login from './Components/Login'
 import LogOut from './Components/LogOut'
@@ -84,22 +83,61 @@ export default class App extends Component {
   }
 
 
+  addWorkoutToArr = (workoutObj)=>{
+    // fetch(`http://localhost:9393/workouts/${workoutId}`)
+    //   .then(r => r.json())
+    //   .then(workoutObj=>{
+    //     console.log("this is the workoutObj in App.js: \n", workoutObj)
+    //     let stateCopy = [...this.state.workouts]
+    //     console.log("this it the stateCopy: \n", stateCopy)
+    //     let workoutsCopy = [...stateCopy, workoutObj]
+    //     console.log("this is the workoutsCopy: \n", workoutsCopy)
+    //     this.setState({
+    //       workouts: stateCopy
+    //     })
+    //   })
+
+    let stateCopy = [...this.state.workouts]
+    let workoutsCopy = [...stateCopy, workoutObj]
+    this.setState({
+      workouts: workoutsCopy
+    })
+
+  }
+
+
   render() {
-    console.log(this.state.user)
     //SEARCH FILTER FUNTIONALITY
     let workoutsCopy = [...this.state.workouts]
     let newArrayOfWorkouts = workoutsCopy.filter((workout)=>{
       return (workout.name.toLowerCase().includes(this.state.filter.toLowerCase()))
       })
     return (
-      <div>
+      <div style={{ 
+        backgroundImage: `url("https://wallpapertag.com/wallpaper/full/8/a/7/717416-download-free-arnold-schwarzenegger-bodybuilding-wallpapers-posters-and-pictures-hd-1920x1200-download.jpg")`,
+        // backgroundRepeat: 'no-repeat',
+        width:'1950px'  
+    }}>
          <Header />
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
-         <LogWorkout />
-         {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id}/> : null }
+         {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id} addWorkoutToArr={this.addWorkoutToArr}/> : null }
+         <br></br>
          {this.state.loggedIn? null: <NewUserForm />}
          {this.state.loggedIn?<SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>:null}
-         <WorkoutContainer workouts={this.state.workouts} deleteWorkout={this.deleteWorkout}/>
+         <WorkoutContainer workouts={newArrayOfWorkouts} deleteWorkout={this.deleteWorkout}/>
+         {/* <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br> */}
       </div>
     )
   }

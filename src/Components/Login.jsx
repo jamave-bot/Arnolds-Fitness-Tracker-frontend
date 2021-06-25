@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Form, Button } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 
 
 export default class Login extends Component {
@@ -19,7 +19,6 @@ export default class Login extends Component {
         })
         .then((r) => r.json())
         .then((userObj) =>{
-            console.log(userObj)
             this.props.logIn(userObj)
             this.setState({
                 name: '',
@@ -38,17 +37,15 @@ export default class Login extends Component {
     render() {
         return (
             <>
-            <h1>Log In Form</h1>
-            <form onSubmit={this.handleSubmit}>
+            <h3>Log In</h3>
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Group>
+                <Form.Input label="Name/Username" placeholder='Enter Account Name' name='name' onChange={this.handleChange} value={this.state.name}/>
+                <Form.Input  label="Password" placeholder='Password' type='password' name='password'onChange={this.handleChange} value={this.state.password}/>
+                </Form.Group>
+                <Button type='submit'>Sign In</Button>
 
-                <label>Name</label>
-                <input placeholder='Enter Account Name' name='name' onChange={this.handleChange} value={this.state.name}/>
-
-                <label>Password</label>
-                <input placeholder='...' type='password' name='password'onChange={this.handleChange} value={this.state.password}/>
-
-                <button type='submit'>Submit</button>
-            </form>
+            </Form>
             </>
         )
     }

@@ -11,7 +11,13 @@ export default class NewUserForm extends Component {
         weight:"",
         bodyfat:"",
         password:"",
-        professorName:""
+        showForm: false,
+    }
+
+    handleClick = ()=>{
+        this.setState({
+            showForm: !this.state.showForm
+        })
     }
 
     handleChange = (evt)=>{
@@ -32,8 +38,6 @@ export default class NewUserForm extends Component {
         })
         .then((r) => r.json())
         .then((userObj) =>{
-            console.log(userObj)
-            // this.props.getWorkOutObj(workoutObj)
             this.setState({               
                 name: "",
                 age: "",
@@ -42,46 +46,50 @@ export default class NewUserForm extends Component {
                 bodyfat:"",
                 password:"",
             })
-            // this.props.handleClick()
-            // this.props.toggleExerciseForm()
+
         });
 
     }
 
     render() {
-        console.log(this.state)
         return (
             <>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Field>
-                    <h2></h2>    
-                    <label>Not a member? Sign up!</label> <br></br>
-                    <input placeholder='Name' onChange={this.handleChange} name="name" value={this.state.name} />
-                    </Form.Field>
+                <label>Not a member?</label>
+                <br></br>
+                <Button onClick={this.handleClick}>{this.state.showForm? "Nevermind": "Sign Up!"}</Button>  
+                
+                {this.state.showForm? 
+                <Form onSubmit={this.handleSubmit} size='small'>
+                    <Form.Group>
+                    <Form.Input width={3} placeholder='Name/Username' onChange={this.handleChange} name="name" value={this.state.name} />
+                    </Form.Group>
 
-                    <Form.Field>
-                    <input placeholder='Age' onChange={this.handleChange} name="age" value={this.state.age} />
-                    </Form.Field>
+                    <Form.Group>
+                    <Form.Input width={3} placeholder='Age' onChange={this.handleChange} name="age" value={this.state.age} />
+                    </Form.Group>
 
-                    <Form.Field>
-                    <input placeholder='Height' onChange={this.handleChange} name="height" value={this.state.height} />
-                    </Form.Field>
+                    <Form.Group>
+                    <Form.Input width={3} placeholder='Height' onChange={this.handleChange} name="height" value={this.state.height} />
+                    </Form.Group>
 
-                    <Form.Field>
-                    <input placeholder='Weight' onChange={this.handleChange} name="weight" value={this.state.weight} />
-                    </Form.Field>
+                    <Form.Group>
+                    <Form.Input width={3} placeholder='Weight' onChange={this.handleChange} name="weight" value={this.state.weight} />
+                    </Form.Group>
 
                    
-                    <Form.Field>
-                    <input placeholder="Body Fat Percentage" onChange={this.handleChange} name="bodyfat" value={this.state.bodyfat}/>
-                    </Form.Field>
+                    <Form.Group>
+                    <Form.Input width={3} placeholder="Body Fat Percentage" onChange={this.handleChange} name="bodyfat" value={this.state.bodyfat}/>
+                    </Form.Group>
 
-                    <Form.Field>
-                    <input placeholder="Choose a Password" onChange={this.handleChange} name="password" value={this.state.password} type='password'/>
-                    </Form.Field>
+                    <Form.Group>
+                    <Form.Input width={3} placeholder="Choose a Password" onChange={this.handleChange} name="password" value={this.state.password} type='password'/>
+                    </Form.Group>
 
                     <Button type='submit' onClick={this.handleSubmit}>Create User!</Button>
                 </Form>
+                :
+                null
+                }
             </>
         )
     }
