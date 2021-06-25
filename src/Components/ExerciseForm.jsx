@@ -65,10 +65,13 @@ export default class ExerciseForm extends Component {
     render() {
         let workoutArr = this.state.exercisesArr.map(exercise => 
             <div key={exercise.id}>
-              <h3>{exercise.name}</h3> 
-              <p>Weight:{exercise.weight}</p>
-              <p>Sets:{exercise.sets}</p> 
-              <p>Reps:{exercise.reps}</p> 
+              <h5>{exercise.name}</h5> 
+            {exercise.weight ? <p>Weight: {exercise.weight}</p> : null }
+            {exercise.sets ? <p>Sets: {exercise.sets}</p> : null }
+            {exercise.reps ? <p>Reps: {exercise.reps}</p> : null }
+            {exercise.duration ? <p>Duration: {exercise.duration}</p> : null }
+            {exercise.calories_burned ? <p>Calories Burned: {exercise.calories_burned}</p> : null }
+            <br></br>
             </div> )
         return (
             <>
@@ -76,33 +79,27 @@ export default class ExerciseForm extends Component {
                 {workoutArr}
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
-                    <label>Name of Exercise</label> <br></br>
-                    <input placeholder='Name of Exercise' onChange={this.handleChange} name="name" value={this.state.name}/>
+                    <Form.Input width={3} label="Name of Exercise" placeholder='Name of Exercise' onChange={this.handleChange} name="name" value={this.state.name}/>
                     </Form.Field>
 
                     <Form.Field>
-                    <label>Weight?</label> <br></br>
-                    <input placeholder="Are you using weight?" onChange={this.handleChange} name="weight" value={this.state.weight} />
+                    <Form.Input width={3} label="Weight" placeholder="Are you using weight?" onChange={this.handleChange} name="weight" value={this.state.weight} />
                     </Form.Field>
 
                     <Form.Field>
-                    <label>Sets</label> <br></br>
-                    <input placeholder="Sets" onChange={this.handleChange} name="sets" value={this.state.sets}/>
+                    <Form.Input width={3} label="Sets" placeholder="Sets" onChange={this.handleChange} name="sets" value={this.state.sets}/>
+                    <Form.Input width={3} label="Reps" placeholder="Reps" onChange={this.handleChange} name="reps" value={this.state.reps}/>
                     </Form.Field>
 
                     <Form.Field>
-                    <label>Reps</label> <br></br>
-                    <input placeholder="Reps" onChange={this.handleChange} name="reps" value={this.state.reps}/>
                     </Form.Field>
 
                     <Form.Field>
-                    <label>Duration</label> <br></br>
-                    <input placeholder="Duration (minutes)" onChange={this.handleChange} name="duration" value={this.state.duration}/>
+                    <Form.Input width={3} label="Duration" placeholder="Duration (minutes)" onChange={this.handleChange} name="duration" value={this.state.duration}/>
                     </Form.Field>
 
                     <Form.Field>
-                    <label>Calories Burned</label> <br></br>
-                    <input placeholder="Estimated Calories Burned" onChange={this.handleChange} name="calories_burned" value={this.state.calories_burned}/>
+                    <Form.Input width={3} label="Calories Burned" placeholder="Estimated Calories Burned" onChange={this.handleChange} name="calories_burned" value={this.state.calories_burned}/>
                     </Form.Field>
 
 

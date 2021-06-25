@@ -36,7 +36,7 @@ export default class WorkOutContainer extends Component {
             
             <Segment style={{ 
                 backgroundColor: 'rgba(52, 52, 52, 0.8)',
-
+                align: "center",
                 width: windowWidth
             }}>
                 <Grid columns={2} relaxed='very'>

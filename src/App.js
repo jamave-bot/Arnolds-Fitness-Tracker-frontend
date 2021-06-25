@@ -15,6 +15,7 @@ export default class App extends Component {
 
 
   state= {
+    user: {},
     user_id: 0,
     name: '',
     age: 0,
@@ -23,7 +24,8 @@ export default class App extends Component {
     bodyfat: 0.0,
     workouts: [],
     filter:'',
-    loggedIn : false
+    loggedIn : false,
+    ordered: false
   }
 
    //UPDATE FILTER WITHIN STATE IN ACCORDANCE WITH OUR SEARCHBAR
@@ -39,6 +41,7 @@ export default class App extends Component {
       alert("Username or Password is Wrong!")
     } else{
       this.setState({
+        user: user,
         user_id: user.id,
         name: user.name,
         age: user.age,
@@ -71,6 +74,7 @@ export default class App extends Component {
 
   logOut = ()=>{
     this.setState({
+      user: {},
       user_id: 0,
       name: '',
       age: 0,
@@ -97,14 +101,36 @@ export default class App extends Component {
     //     })
     //   })
 
-    let stateCopy = [...this.state.workouts]
-    let workoutsCopy = [...stateCopy, workoutObj]
-    this.setState({
-      workouts: workoutsCopy
-    })
+    // let stateCopy = [...this.state.workouts]
+    // let workoutsCopy = [...stateCopy, workoutObj]
+    // this.setState({
+    //   workouts: workoutsCopy
+    // })
+
+    this.setState(prevState =>({
+      workouts: [...prevState.workouts, workoutObj]
+    }))
 
   }
 
+  orderWorkouts = () =>{
+    console.log(this.state.ordered)
+    console.log(this.state.workouts)
+    this.setState({
+      ordered: !this.state.ordered
+    })
+    if (!this.state.ordered){
+        let copiedArr = [...this.state.workouts]
+        let orderedArr = copiedArr.sort((a, b) => parseFloat(b.id) - parseFloat(a.id));
+        this.setState({
+          workouts: orderedArr
+        })
+    } else {
+      this.setState({
+        workouts: this.state.user.workouts
+      })
+    }
+  }
 
   render() {
     //SEARCH FILTER FUNTIONALITY
@@ -123,8 +149,8 @@ export default class App extends Component {
          {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id} addWorkoutToArr={this.addWorkoutToArr}/> : null }
          <br></br>
          {this.state.loggedIn? null: <NewUserForm />}
-         {this.state.loggedIn?<SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>:null}
-         <WorkoutContainer workouts={newArrayOfWorkouts} deleteWorkout={this.deleteWorkout}/>
+         {this.state.loggedIn?<SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState} orderWorkouts={this.orderWorkouts}/>:null}
+         <WorkoutContainer workouts={this.state.workouts? newArrayOfWorkouts: []} deleteWorkout={this.deleteWorkout}/>
          {/* <br></br>
                   <br></br>
                   <br></br>

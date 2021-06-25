@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Checkbox } from 'semantic-ui-react'
 
 export default class SearchBar extends Component {
     
@@ -21,6 +22,8 @@ export default class SearchBar extends Component {
                <i class="search icon"></i>
              </div>
              <div class="results"></div>
+             <br></br>
+            <Checkbox label="Recents first" onChange={this.props.orderWorkouts}/>
             </div>
         )
     }

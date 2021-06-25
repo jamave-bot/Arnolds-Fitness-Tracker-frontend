@@ -47,14 +47,16 @@ export default class NewWorkoutForm extends Component {
             <>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
-                    <label>New Workout?</label> <br></br>
-                    <input placeholder='Name of Workout' onChange={this.handleChange} name="name" value={this.state.name}/>
+                    <Form.Input width={3} label="New Workout?" placeholder='Name of Workout' onChange={this.handleChange} name="name" value={this.state.name}/>
                     </Form.Field>
-                    <Form.Field>
-                    <label>Type</label> <br></br>
-                    <input placeholder="What're you working out?" onChange={this.handleChange} name="body_part" value={this.state.body_part}/>
-                    </Form.Field>
+
+                    {/* <Form.Field>
+                    <Form.Input width={3} label="Type" placeholder="What're you working out?" onChange={this.handleChange} name="body_part" value={this.state.body_part}/>
+                    </Form.Field> */}
                     <Button type='submit'>Create Workout!</Button>
+                    <br></br>
+                    <br></br>
+
                 </Form>
             </>
         )
