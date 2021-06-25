@@ -37,7 +37,7 @@ export default class Login extends Component {
     render() {
         return (
             <>
-            <h3>Log In</h3>
+            <h1>Log In</h1>
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group>
                 <Form.Input label="Name/Username" placeholder='Enter Account Name' name='name' onChange={this.handleChange} value={this.state.name}/>
