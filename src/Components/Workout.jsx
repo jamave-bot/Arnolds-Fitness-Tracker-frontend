@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import 'semantic-ui-css/semantic.min.css'
+import { Card } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 
 export default class Workout extends Component {
@@ -36,28 +37,40 @@ render() {
             
         return (
 
-           
+           <Card.Group>
+             
             <div onClick={this.toggleShowingFront}>
                <div>{this.state.showingFront? 
-                     <div id="workoutFront">{this.props.workout.name}
-                         <br></br>
-                         {this.props.workout.created_at}
-                         <br></br>
-                         <Button onClick={this.deleteHandler}>Delete</Button>
-                         <br></br>
-                         <br></br>
-                         <br></br>
+                    <div>
+                      <Card color='black'>
+                         <Card.Content>
+                             <Card.Header>{this.props.workout.name}</Card.Header>
+                             <Card.Description>{this.props.workout.created_at}</Card.Description>
+                             <Button color="blue" onClick={this.deleteHandler}>Delete</Button>                        
+                         </Card.Content>
+                      </Card>
+                      <br></br>
                      </div>
                      :
                      <div id="workoutBack">
-                         <p> Exercise Details</p>
-                         {workoutArr}                               
+                      <Card color='black'>
+                        <Card.Content>
+                          <Card.Header>{this.props.workout.name} Details</Card.Header>
+                          <Card.Description>Workout {workoutArr}</Card.Description>
+
+                          
+                        </Card.Content>  
+                      </Card>
+                      <br></br>
+
+                                                 
                      </div>
                     }                
                 </div>     
-                
+        
                            
-            </div>
+              </div>
+            </Card.Group>
             
         )
     }
