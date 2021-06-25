@@ -44,7 +44,7 @@ export default class NewWorkoutForm extends Component {
 
     render() {
         return (
-            <>
+            <div>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                     <Form.Input width={3} label="New Workout?" placeholder='Name of Workout' onChange={this.handleChange} name="name" value={this.state.name}/>
@@ -58,7 +58,7 @@ export default class NewWorkoutForm extends Component {
                     <br></br>
 
                 </Form>
-            </>
+            </div>
         )
     }
 }

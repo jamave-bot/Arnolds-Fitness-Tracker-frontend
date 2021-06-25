@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url("https://wallpapertag.com/wallpaper/full/8/a/7/717416-download-free-arnold-schwarzenegger-bodybuilding-wallpapers-posters-and-pictures-hd-1920x1200-download.jpg");
+  background-repeat: no-repeat;
+  width:'1950px'
 }
 
 .App-logo {
@@ -7,10 +10,44 @@
   pointer-events: none;
 }
 
+#logIn{
+  /* display: 'flex';
+  align-items: center;
+  justify-content: center; */
+  position:absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  
+}
+
+#signUp{
+  position:absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+
+#arnie{
+  /* text-align: center; */
+  /* align-content: center; */
+  background-image: url("https://wallpapertag.com/wallpaper/full/8/a/7/717416-download-free-arnold-schwarzenegger-bodybuilding-wallpapers-posters-and-pictures-hd-1920x1200-download.jpg");
+  /* background-repeat: no-repeat; */
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+body,html{
+  height: 100%;
+  margin: 0;
 }
 
 .App-header {
@@ -36,3 +73,4 @@
     transform: rotate(360deg);
   }
 }
+

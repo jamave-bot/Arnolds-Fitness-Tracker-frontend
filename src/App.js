@@ -1,6 +1,7 @@
   
 import './App.css';
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import Header from './Components/Header';
 import SearchBar from './Components/SearchBar.jsx';
@@ -9,6 +10,8 @@ import Login from './Components/Login'
 import LogOut from './Components/LogOut'
 import WorkoutForm from './Components/WorkoutForm'
 import NewUserForm from './Components/NewUserForm';
+import { Message } from 'semantic-ui-react'
+
 
 
 export default class App extends Component {
@@ -138,33 +141,28 @@ export default class App extends Component {
     let newArrayOfWorkouts = workoutsCopy.filter((workout)=>{
       return (workout.name.toLowerCase().includes(this.state.filter.toLowerCase()))
       })
+
+
+
     return (
-      <div style={{ 
-        backgroundImage: `url("https://wallpapertag.com/wallpaper/full/8/a/7/717416-download-free-arnold-schwarzenegger-bodybuilding-wallpapers-posters-and-pictures-hd-1920x1200-download.jpg")`,
-        // backgroundRepeat: 'no-repeat',
-        width:'1950px'  
-    }}>
-         <Header />
-         {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
-         {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id} addWorkoutToArr={this.addWorkoutToArr}/> : null }
-         <br></br>
-         {this.state.loggedIn? null: <NewUserForm />}
-         {this.state.loggedIn?<SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState} orderWorkouts={this.orderWorkouts}/>:null}
-         <WorkoutContainer workouts={this.state.workouts? newArrayOfWorkouts: []} deleteWorkout={this.deleteWorkout}/>
-         {/* <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br> */}
+      <Router>
+      <div id='arnie'>
+
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
+            {this.state.loggedIn? null: <NewUserForm logIn={this.logIn}/>}
+          </Route>
+          <Route path="/home">
+            {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id} addWorkoutToArr={this.addWorkoutToArr}/> : null }
+            <br></br>
+            {this.state.loggedIn?<SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState} orderWorkouts={this.orderWorkouts}/>:null}
+            <WorkoutContainer workouts={this.state.workouts? newArrayOfWorkouts: []} deleteWorkout={this.deleteWorkout}/>
+          </Route>
+         </Switch>
       </div>
+      </Router>
     )
   }
 }

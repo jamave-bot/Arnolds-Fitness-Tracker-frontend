@@ -38,6 +38,9 @@ export default class NewUserForm extends Component {
         })
         .then((r) => r.json())
         .then((userObj) =>{
+            alert("Successfully made an account!")
+            this.handleClick()
+            // this.props.logIn(userObj)
             this.setState({               
                 name: "",
                 age: "",
@@ -53,7 +56,7 @@ export default class NewUserForm extends Component {
 
     render() {
         return (
-            <>
+            <div id="signUp">
                 <label>Not a member?</label>
                 <br></br>
                 <Button onClick={this.handleClick}>{this.state.showForm? "Nevermind": "Sign Up!"}</Button>  
@@ -90,7 +93,7 @@ export default class NewUserForm extends Component {
                 :
                 null
                 }
-            </>
+            </div>
         )
     }
 
