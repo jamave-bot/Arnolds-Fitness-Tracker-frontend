@@ -28,10 +28,10 @@ export default class WorkOutContainer extends Component {
                      <div class="content">
                       Workout Log
                      </div>
-                  </h1>
-                  <ul className="cards">
-                  {this.array()}
-                  </ul>
+                    </h1>
+                   <ul className="cards">
+                    {this.array()}
+                   </ul>
                 
             </div>
 

@@ -55,7 +55,9 @@ export default class NewUserForm extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Field>
                     <h2></h2>    
-                    <label>Not a member? Sign up!</label> <br></br>
+                    
+                    <h1 class="ui header">Not a member? Sign up today!</h1>
+                     <br></br>
                     <input placeholder='Name' onChange={this.handleChange} name="name" value={this.state.name} />
                     </Form.Field>
 
