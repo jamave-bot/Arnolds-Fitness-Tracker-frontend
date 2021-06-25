@@ -84,6 +84,7 @@ export default class App extends Component {
          <WorkoutContainer user={userCopy} deleteWorkout={this.deleteWorkout}/>
          <NewUserForm />
          
+         
       </div>
     )
   }

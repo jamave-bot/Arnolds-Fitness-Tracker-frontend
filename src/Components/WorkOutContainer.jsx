@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Workout from './Workout'
-
+import { Divider, Grid, Image, Segment } from 'semantic-ui-react'
 
 export default class WorkOutContainer extends Component {
 
@@ -21,19 +21,55 @@ export default class WorkOutContainer extends Component {
 
 
         return (
-            <div>
+            
+                <Segment style={{ 
+                    backgroundColor: 'rgba(52, 52, 52, 0.8)',
+                    // backgroundRepeat: 'no-repeat',
+                    width:'1950px'  
+                }}>
+                  
+                     
+                      <div>
+                        <h1 class="ui header">  
+                          <i class="tasks icon"></i>
+                          <div class="content" style={{color:"ghostwhite"}}>
+                          Workout Log
+                          </div>
+                        </h1>
+                        <ul className="cards">
+                          {this.array()}
+                         </ul>
                 
-                <h1 class="ui header">  
-                    <i class="tasks icon"></i>
-                     <div class="content">
-                      Workout Log
-                     </div>
-                    </h1>
-                   <ul className="cards">
-                    {this.array()}
-                   </ul>
-                
-            </div>
+                      </div>
+                  <div class="ui vertical divider" ></div>
+
+
+
+                       
+
+                        
+                        
+                </Segment>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
 
       
 
