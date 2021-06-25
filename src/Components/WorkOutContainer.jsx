@@ -22,11 +22,24 @@ export default class WorkOutContainer extends Component {
 
         return (
             <div>
-                <h2> Workout Log</h2>
+                
+                <h1 class="ui header">  
+                    <i class="tasks icon"></i>
+                     <div class="content">
+                      Workout Log
+                     </div>
+                  </h1>
                   <ul className="cards">
                   {this.array()}
                   </ul>
+                
             </div>
+
+      
+
+
+
+
         )
     }
 }
