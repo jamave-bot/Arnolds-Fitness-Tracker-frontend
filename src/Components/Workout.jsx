@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import 'semantic-ui-css/semantic.min.css'
+import { Button } from 'semantic-ui-react'
 
 export default class Workout extends Component {
 
@@ -41,7 +43,7 @@ render() {
                          <br></br>
                          {this.props.workout.created_at}
                          <br></br>
-                         <button onClick={this.deleteHandler}>Delete</button>
+                         <Button onClick={this.deleteHandler}>Delete</Button>
                          <br></br>
                          <br></br>
                          <br></br>
