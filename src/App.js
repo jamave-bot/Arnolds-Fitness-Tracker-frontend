@@ -139,11 +139,7 @@ export default class App extends Component {
       return (workout.name.toLowerCase().includes(this.state.filter.toLowerCase()))
       })
     return (
-      <div style={{ 
-        backgroundImage: `url("https://wallpapertag.com/wallpaper/full/8/a/7/717416-download-free-arnold-schwarzenegger-bodybuilding-wallpapers-posters-and-pictures-hd-1920x1200-download.jpg")`,
-        // backgroundRepeat: 'no-repeat',
-        width:'1950px'  
-    }}>
+      <div id="arnie" >
          <Header />
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}
          {this.state.loggedIn? <WorkoutForm user_id={this.state.user_id} addWorkoutToArr={this.addWorkoutToArr}/> : null }

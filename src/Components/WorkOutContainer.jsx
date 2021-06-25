@@ -36,7 +36,7 @@ export default class WorkOutContainer extends Component {
             
             <Segment style={{ 
                 backgroundColor: 'rgba(52, 52, 52, 0.8)',
-                align: "center",
+
                 width: windowWidth
             }}>
                 <Grid columns={2} relaxed='very'>
@@ -138,6 +138,7 @@ export default class WorkOutContainer extends Component {
 
               </Grid.Column>
               </Grid>
+              {/* <br></br>
               <br></br>
               <br></br>
               <br></br>
@@ -149,8 +150,7 @@ export default class WorkOutContainer extends Component {
               <br></br>
               <br></br>
               <br></br>
-              <br></br>
-              <br></br>
+              <br></br> */}
             </Segment> 
 
 
