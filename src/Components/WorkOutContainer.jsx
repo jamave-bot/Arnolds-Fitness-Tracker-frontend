@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Workout from './Workout'
 import { Divider, Grid, Image, Segment } from 'semantic-ui-react'
+import YouTube from 'react-youtube';
 
 export default class WorkOutContainer extends Component {
 
@@ -17,16 +18,26 @@ export default class WorkOutContainer extends Component {
     
     
     render() {
-       
-
+        const opts = {
+            height: '390',
+            width: '640',
+            playerVars: {
+              // https://www.youtube.com/watch?v=9CzmotLYznw
+              autoplay: 1,
+            },
+          };
+           let windowWidth = window.innerWidth 
+           
 
         return (
             
                 <Segment style={{ 
                     backgroundColor: 'rgba(52, 52, 52, 0.8)',
-                    // backgroundRepeat: 'no-repeat',
-                    width:'1950px'  
+ 
+                    width: windowWidth
                 }}>
+                    <Grid columns={2} relaxed='very'>
+                    <Grid.Column>
                   
                      
                       <div>
@@ -41,18 +52,22 @@ export default class WorkOutContainer extends Component {
                          </ul>
                 
                       </div>
-                  <div class="ui vertical divider" ></div>
+                      </Grid.Column>
+                
+                  <Grid.Column >
+                  <h1 class="ui header">  
+                          <i class="tv icon"></i>
+                          <div class="content" style={{color:"ghostwhite"}}>
+                          Inspo Channel
+                          </div>
+                        </h1>
+                  
+                  <YouTube videoId="bO-2AEcRYhQ" opts={opts} onReady={this._onReady} />
+                  
 
-
-
-                       
-
-                        
-                        
-                </Segment>
-
-
-
+                  </Grid.Column>
+                  </Grid>
+                </Segment> 
 
 
 

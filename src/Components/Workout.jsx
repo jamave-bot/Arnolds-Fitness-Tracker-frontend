@@ -31,7 +31,7 @@ render() {
       <p>Calories Burned:{exercise.calories_burned}</p>
       <p>Weight:{exercise.weight}</p>
     </div> )
-                                                 
+                 console.log(this.props.workout.exercises)                                
             
         
             
