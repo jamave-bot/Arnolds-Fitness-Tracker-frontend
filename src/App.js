@@ -83,8 +83,22 @@ export default class App extends Component {
          <SearchBar filter={this.state.filter} updateFilterState={this.updateFilterState}/>
          <WorkoutContainer user={userCopy} deleteWorkout={this.deleteWorkout}/>
          <NewUserForm />
-         
-         
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
       </div>
     )
   }
