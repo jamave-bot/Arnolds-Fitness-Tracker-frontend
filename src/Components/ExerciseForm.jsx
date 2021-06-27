@@ -106,7 +106,7 @@ export default class ExerciseForm extends Component {
                     <Button type='submit'>Add Exercise</Button>
                 </Form>
 
-                <Button onClick={this.handleClick}>Finish</Button>
+                <Button onClick={this.handleClick}>Finish Workout</Button>
             </>
         )
     }

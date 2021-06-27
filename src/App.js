@@ -142,7 +142,7 @@ export default class App extends Component {
       <div style={{ 
         backgroundImage: `url("https://wallpapertag.com/wallpaper/full/8/a/7/717416-download-free-arnold-schwarzenegger-bodybuilding-wallpapers-posters-and-pictures-hd-1920x1200-download.jpg")`,
         // backgroundRepeat: 'no-repeat',
-        width:'1950px'  
+        height: '100%' 
     }}>
          <Header />
          {this.state.loggedIn? <LogOut user={this.state} logOut={this.logOut}/> : <Login logIn={this.logIn}/>}

@@ -38,6 +38,8 @@ export default class NewUserForm extends Component {
         })
         .then((r) => r.json())
         .then((userObj) =>{
+            this.handleClick()
+            alert("User successfully created! You can sign in now!")
             this.setState({               
                 name: "",
                 age: "",

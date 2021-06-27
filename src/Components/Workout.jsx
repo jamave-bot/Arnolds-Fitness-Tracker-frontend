@@ -90,7 +90,7 @@ render() {
                     <Card color='black'>
                         <Card.Content>
                             <Card.Header>{this.props.workout.name}</Card.Header>
-                            <Card.Description>{this.props.workout.created_at.slice(0,10)}</Card.Description>
+                            <Card.Description>{this.props.workout.created_at.slice(0,10).toString() + " " + this.props.workout.created_at.slice(10,7).toString() }  </Card.Description>
                             <Button color="red" onClick={this.deleteHandler}>Delete</Button>                        
                         </Card.Content>
                     </Card>
